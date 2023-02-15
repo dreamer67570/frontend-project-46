@@ -1,16 +1,19 @@
 import _ from 'lodash';
 import fs from 'fs';
 import path from 'path';
+import parse from './parsers.js';
 
-const getRelativePath = (filename) => path.resolve(process.cwd(), '__fixtures__', filename);
-const readFile = (filePatch) => fs.readFileSync(getRelativePath(filePatch) ?? filePatch, 'utf8');
+const getRelativePath = (filename) => path.resolve(filename);
+const readFile = (filePatch) => fs.readFileSync(getRelativePath(filePatch), 'utf8');
+
+const getFormat = (filePatch) => filePatch.split('.')[1];
 
 export default (filePatch1, filePatch2) => {
   const file1 = readFile(filePatch1);
   const file2 = readFile(filePatch2);
 
-  const obj1 = JSON.parse(file1);
-  const obj2 = JSON.parse(file2);
+  const obj1 = parse(file1, getFormat(filePatch1));
+  const obj2 = parse(file2, getFormat(filePatch1));
 
   const keys = _.union(Object.keys(obj1), Object.keys(obj2));
   const sortKeys = _.sortBy(keys);
