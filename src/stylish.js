@@ -1,6 +1,6 @@
 import _ from 'lodash';
 
-const stringify = (value, replacer = ' ', spacesCount = 1) => {
+export const stringify = (value, replacer = ' ', spacesCount = 1) => {
   const iter = (currentValue, depth) => {
     if (!_.isObject(currentValue)) {
       return `${currentValue}`;
