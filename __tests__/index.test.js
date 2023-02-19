@@ -2,6 +2,7 @@ import path, { dirname } from 'path';
 import fs from 'fs';
 import { fileURLToPath } from 'url';
 import genDiff from '../src/index.js';
+import { stringify } from '../src/stylish.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -21,4 +22,9 @@ test('check diff flat YAML files', () => {
   const fileName2 = getFixturePath('file2.yml');
 
   expect(genDiff(fileName1, fileName2)).toEqual(readFile('test.txt'));
+});
+
+test('stringify', () => {
+  const fileName1 = readFile('file1.json');
+  expect(stringify(fileName1)).toEqual(readFile('testStringify.txt'));
 });
