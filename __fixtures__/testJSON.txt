@@ -1,0 +1,41 @@
+{
+   "key": "common",
+   "diffType": "hasСhildren",
+   "children": [
+      {
+         "key": "follow",
+         "value": false,
+         "diffType": "added"
+      },
+      {
+         "key": "setting1",
+         "value": "Value 1",
+         "diffType": "unchanged"
+      },
+      {
+         "key": "setting2",
+         "value": 200,
+         "diffType": "deleted"
+      },
+      {
+         "key": "setting3",
+         "value": {
+            "before": true,
+            "after": null
+         },
+         "diffType": "changed"
+      },
+      {
+         "key": "setting4",
+         "value": "blah blah",
+         "diffType": "added"
+      },
+      {
+         "key": "setting5",
+         "value": {
+            "key5": "value5"
+         },
+         "diffType": "added"
+      }
+   ]
+}
