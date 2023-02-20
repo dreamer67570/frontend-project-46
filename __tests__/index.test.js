@@ -30,6 +30,14 @@ test('check diff YAML files', () => {
   expect(genDiff(fileName1, fileName2, formatter2)).toEqual(readFile('testPlain.txt'));
 });
 
+test('check formatter json', () => {
+  const fileName1 = getFixturePath('file3.json');
+  const fileName2 = getFixturePath('file4.json');
+  const formatter1 = 'json';
+
+  expect(genDiff(fileName1, fileName2, formatter1)).toEqual(readFile('testJSON.txt'));
+});
+
 test('stringify', () => {
   const fileName1 = readFile('file1.json');
   expect(stringify(fileName1)).toEqual(readFile('testStringify.txt'));
