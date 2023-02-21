@@ -33,10 +33,8 @@ export default (data) => {
         }
       }
       const { children } = element;
-      patch.push(key);
-      return iter(children, patch);
+      return iter(children, [...patch, key]);
     });
-    patch.pop();
     return lines.join('\n');
   };
   return iter(data, []);
