@@ -3,7 +3,7 @@ import _ from 'lodash';
 const normalize = (value) => {
   if (!_.isObject(value)) {
     const type = typeof value;
-    if (value === null) {
+    if (value === null || value === 0) {
       return value;
     }
     return (type !== 'boolean') ? `'${value}'` : value;
