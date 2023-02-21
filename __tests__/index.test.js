@@ -51,7 +51,7 @@ test('check parse format', () => {
   const fileName = 'file.txt';
   const format = fileName.split('.')[1];
 
-  expect(parsers(fileName, format)).toBe(`Unknown order state: '${format}'!`);
+  expect(parsers(fileName, format)).toBe(`Unknown order format: '${format}'!`);
 });
 
 test('stringify', () => {
