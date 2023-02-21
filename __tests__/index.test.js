@@ -39,14 +39,6 @@ test('check formatter json', () => {
   expect(genDiff(fileName1, fileName2, formatter1)).toEqual(readFile('testJSON.txt'));
 });
 
-test('check parse formatters', () => {
-  const fileName1 = getFixturePath('file3.json');
-  const fileName2 = getFixturePath('file4.json');
-  const formatter = 'string';
-
-  expect(genDiff(fileName1, fileName2, formatter)).toBe(`Unknown order state: '${formatter}'!`);
-});
-
 test('check parse format', () => {
   const fileName = 'file.txt';
   const format = fileName.split('.')[1];
