@@ -3,6 +3,7 @@ import fs from 'fs';
 import { fileURLToPath } from 'url';
 import genDiff from '../src/index.js';
 import { stringify } from '../src/formatters/stylish.js';
+import parsers from '../src/parsers.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -36,6 +37,21 @@ test('check formatter json', () => {
   const formatter1 = 'json';
 
   expect(genDiff(fileName1, fileName2, formatter1)).toEqual(readFile('testJSON.txt'));
+});
+
+test('check parse formatters', () => {
+  const fileName1 = getFixturePath('file3.json');
+  const fileName2 = getFixturePath('file4.json');
+  const formatter = 'string';
+
+  expect(genDiff(fileName1, fileName2, formatter)).toBe(`Unknown order state: '${formatter}'!`);
+});
+
+test('check parse format', () => {
+  const fileName = 'file.txt';
+  const format = fileName.split('.')[1];
+
+  expect(parsers(fileName, format)).toBe(`Unknown order state: '${format}'!`);
 });
 
 test('stringify', () => {
