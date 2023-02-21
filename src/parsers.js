@@ -7,6 +7,6 @@ export default (file, format) => {
     case 'yml':
     case 'yaml':
       return yaml.load(file);
-    default: return `Unknown order state: '${format}'!`;
+    default: return `Unknown order format: '${format}'!`;
   }
 };
