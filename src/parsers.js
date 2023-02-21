@@ -4,6 +4,9 @@ export default (file, format) => {
   switch (format) {
     case 'json':
       return JSON.parse(file);
-    default: return yaml.load(file);
+    case 'yml':
+    case 'yaml':
+      return yaml.load(file);
+    default: return `Unknown order state: '${format}'!`;
   }
 };
