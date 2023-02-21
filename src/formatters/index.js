@@ -1,12 +1,18 @@
 import stylish from './stylish.js';
 import plain from './plain.js';
-
-const mapFormatter = {
-  stylish,
-  plain,
-};
+import json from './json.js';
 
 export default (data, nameFormater) => {
-  const formatter = mapFormatter[nameFormater];
-  return formatter(data);
+  switch (nameFormater) {
+    case 'stylish': {
+      return stylish(data);
+    }
+    case 'plain': {
+      return plain(data);
+    }
+    case 'json': {
+      return json(data);
+    }
+    default: return `Unknown order state: '${nameFormater}'!`;
+  }
 };
