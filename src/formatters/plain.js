@@ -1,14 +1,11 @@
-import _ from 'lodash';
-
 const normalize = (value) => {
-  if (!_.isObject(value)) {
-    const type = typeof value;
-    if (value === null || value === 0) {
-      return value;
-    }
-    return (type !== 'boolean') ? `'${value}'` : value;
+  if (value === null) return null;
+  switch (typeof value) {
+    case 'number': return value;
+    case 'string': return `'${value}'`;
+    case 'object': return '[complex value]';
+    default: return value;
   }
-  return '[complex value]';
 };
 
 export default (data) => {
